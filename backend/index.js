@@ -1,3 +1,4 @@
+require('dotenv').config();
 const connectToMongo = require('./db')
 const express = require('express')
 const cors = require('cors')
@@ -23,8 +24,7 @@ app.use(express.static(path.join(__dirname,'/frontend/dist')))
 app.get('*', (req,res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'))
 }) 
-
+console.log(process.env.PORT);
 app.listen(process.env.PORT,()=>{
     console.log(`listening at http://localhost:${process.env.PORT}`)
 })
-
